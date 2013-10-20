@@ -34,6 +34,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -42,8 +44,18 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="VIBlend.WinForms.Controls, Version=9.0.0.0, Culture=neutral, PublicKeyToken=6feea38fef5ea0cf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\EricMediaCenter\VIBlend.WinForms.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="VIBlend.WinForms.Utilities, Version=8.0.0.0, Culture=neutral, PublicKeyToken=970a5af59bc48043, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\EricMediaCenter\VIBlend.WinForms.Utilities.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DuProprioSession.cs" />
+    <Compile Include="FavItemSummary.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -52,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -60,6 +75,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -73,6 +89,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections2011.csproj">
+      <Project>{e6120916-9399-4bf5-8f95-19d79df74067}</Project>
+      <Name>EricUtilityCollections2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtilityNetworking\EricUtilityNetworking2011.csproj">
+      <Project>{980f8de9-2f6e-4a96-849d-23754b364271}</Project>
+      <Name>EricUtilityNetworking2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtilityWinForms\EricUtilityWinForms2011.csproj">
+      <Project>{abf7d9de-3646-4737-8efc-5c3d5fd1cfa5}</Project>
+      <Name>EricUtilityWinForms2011</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EricUtility\EricUtility2011.csproj">
+      <Project>{e88c4aef-1b0b-45c0-a08d-cbcda35c1e62}</Project>
+      <Name>EricUtility2011</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wait.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gmap-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\logo-small.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
