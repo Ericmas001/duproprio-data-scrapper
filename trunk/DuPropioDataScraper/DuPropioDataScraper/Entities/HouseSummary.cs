@@ -10,10 +10,11 @@ using System.Drawing;
 using EricUtility.Networking.Gathering;
 using System.Net.Http;
 
-namespace DuPropioDataScraper
+namespace DuPropioDataScraper.Entities
 {
-    public class FavItemSummary
+    public class HouseSummary
     {
+        private SessionInfo m_Session;
         private int m_NoAnnonce;
         private double m_Latitude;
         private double m_Longitude;
@@ -26,6 +27,13 @@ namespace DuPropioDataScraper
         private int m_Prix;
         private string m_Precison;
         private string m_Summary;
+
+        private HouseInfo m_Details = null;
+
+        public HouseInfo Details
+        {
+            get { return m_Details; }
+        }
 
         public int NoAnnonce
         {
@@ -109,8 +117,9 @@ namespace DuPropioDataScraper
             return "#" + m_NoAnnonce + " - " + m_Prix.ToString("C0") + " - " + m_Ville + ", " + m_Type + ", " + m_Adresse;
         }
 
-        public FavItemSummary(string html)
+        public HouseSummary(SessionInfo session, string html)
         {
+            m_Session = session;
             m_NoAnnonce = int.Parse(html.Extract("data-code=\"", "\"").Trim());
 
             string[] latLong = html.Extract("rel=\"", "\"").Split('|');
@@ -139,6 +148,14 @@ namespace DuPropioDataScraper
                 m_Precison = HttpUtility.HtmlDecode(m_Precison);
 
             m_Summary = html.Extract("<p class=\"resultMeta\">", "</p>").RemoveHTMLTags();
+        }
+
+        public async Task<bool> LoadDetails()
+        {
+            if (m_Details != null)
+                return false ;
+            m_Details = await m_Session.GetHouseInfo(this);
+            return true;
         }
     }
 }
