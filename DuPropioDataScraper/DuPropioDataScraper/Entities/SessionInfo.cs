@@ -11,9 +11,9 @@ using System.Drawing;
 using System.IO;
 using EricUtility.Networking.Gathering;
 
-namespace DuPropioDataScraper
+namespace DuPropioDataScraper.Entities
 {
-    public class DuProprioSession
+    public class SessionInfo
     {
         private string m_Username;
         private string m_Password;
@@ -28,7 +28,7 @@ namespace DuPropioDataScraper
             get { return m_Connected; }
         }
 
-        public DuProprioSession(string user, string pass)
+        public SessionInfo(string user, string pass)
         {
             m_Username = user;
             m_Password = pass;
@@ -85,7 +85,7 @@ namespace DuPropioDataScraper
             return m_Connected;
         }
 
-        public async Task<IEnumerable<FavItemSummary>> GetFavs()
+        public async Task<IEnumerable<HouseSummary>> GetFavs()
         {
             if (!m_Connected)
                 await Connect();
@@ -100,7 +100,18 @@ namespace DuPropioDataScraper
             // Get Rid of the Sold ones
             liste = liste.Where(x => !x.Contains("<div class=\"infoSold\">"));
 
-            return liste.Select(x => new FavItemSummary(x));
+            return liste.Select(x => new HouseSummary(this, x));
+        }
+
+        public async Task<HouseInfo> GetHouseInfo(HouseSummary summary)
+        {
+            if (!m_Connected)
+                await Connect();
+            if (!m_Connected)
+                return null;
+            
+            // Get Page
+            return new HouseInfo(summary, await m_Client.GetStringAsync(summary.DetailsURL));
         }
     }
 }
