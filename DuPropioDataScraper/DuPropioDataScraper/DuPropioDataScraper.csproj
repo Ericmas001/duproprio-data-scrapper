@@ -54,11 +54,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\PictureInfo.cs" />
-    <Compile Include="Entities\SessionInfo.cs" />
-    <Compile Include="Entities\HouseInfo.cs" />
-    <Compile Include="Entities\HouseSummary.cs" />
-    <Compile Include="Entities\HouseProperty.cs" />
     <Compile Include="Windows.Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,7 +62,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Entities\RoomInfo.cs" />
     <EmbeddedResource Include="Windows.Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,17 +89,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EricUtilityCollections\EricUtilityCollections2011.csproj">
-      <Project>{e6120916-9399-4bf5-8f95-19d79df74067}</Project>
-      <Name>EricUtilityCollections2011</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EricUtilityNetworking\EricUtilityNetworking2011.csproj">
-      <Project>{980f8de9-2f6e-4a96-849d-23754b364271}</Project>
-      <Name>EricUtilityNetworking2011</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EricUtilityWinForms\EricUtilityWinForms2011.csproj">
-      <Project>{abf7d9de-3646-4737-8efc-5c3d5fd1cfa5}</Project>
-      <Name>EricUtilityWinForms2011</Name>
+    <ProjectReference Include="..\DuProprioLib\DuProprioLib.csproj">
+      <Project>{bb88de31-f12c-43ff-9847-e59ae4ba1daf}</Project>
+      <Name>DuProprioLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\EricUtility\EricUtility2011.csproj">
       <Project>{e88c4aef-1b0b-45c0-a08d-cbcda35c1e62}</Project>

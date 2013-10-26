@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using EricUtility;
 using System.Web;
 
-namespace DuPropioDataScraper.Entities
+namespace DuProprioLib.Entities
 {
     class PictureInfo
     {

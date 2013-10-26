@@ -11,7 +11,7 @@ using System.Drawing;
 using System.IO;
 using EricUtility.Networking.Gathering;
 
-namespace DuPropioDataScraper.Entities
+namespace DuProprioLib.Entities
 {
     public class SessionInfo
     {
