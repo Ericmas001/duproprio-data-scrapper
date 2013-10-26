@@ -1,6 +1,5 @@
-﻿using DuPropioDataScraper.Entities;
+﻿using DuProprioLib.Entities;
 using EricUtility;
-using EricUtility.Networking.Gathering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

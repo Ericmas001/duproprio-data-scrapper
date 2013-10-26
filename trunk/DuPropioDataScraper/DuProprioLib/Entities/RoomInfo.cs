@@ -8,7 +8,7 @@ using EricUtility;
 using System.Globalization;
 using System.Web;
 
-namespace DuPropioDataScraper.Entities
+namespace DuProprioLib.Entities
 {
     public class RoomInfo
     {

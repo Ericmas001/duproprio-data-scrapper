@@ -10,7 +10,7 @@ using System.Drawing;
 using EricUtility.Networking.Gathering;
 using System.Net.Http;
 
-namespace DuPropioDataScraper.Entities
+namespace DuProprioLib.Entities
 {
     public class HouseSummary
     {
