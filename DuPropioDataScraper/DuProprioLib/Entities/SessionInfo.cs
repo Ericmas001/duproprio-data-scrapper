@@ -109,7 +109,7 @@ namespace DuProprioLib.Entities
                 await Connect();
             if (!m_Connected)
                 return null;
-            
+
             // Get Page
             return new HouseInfo(summary, await m_Client.GetStringAsync(summary.DetailsURL));
         }

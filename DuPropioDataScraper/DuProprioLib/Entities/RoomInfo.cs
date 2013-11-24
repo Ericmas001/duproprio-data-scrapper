@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using EricUtility;
 using System.Globalization;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace DuProprioLib.Entities
 {
@@ -17,9 +18,10 @@ namespace DuProprioLib.Entities
         private SizeF m_DimPieds;
         private SizeF m_DimMetres;
         private string m_Plancher;
-        private HouseInfo m_House;
+        private HouseDetailInfo m_House;
 
-        public HouseInfo House
+        [JsonIgnore]
+        public HouseDetailInfo House
         {
             get { return m_House; }
         }
@@ -53,7 +55,7 @@ namespace DuProprioLib.Entities
             get { return m_Plancher; }
             set { m_Plancher = value; }
         }
-        public RoomInfo(HouseInfo house, string html)
+        public RoomInfo(HouseDetailInfo house, string html)
         {
             m_House = house;
             string[] cells = html.Split(new String[] { "</td>" }, StringSplitOptions.None).Select(x => x.RemoveHTMLTags().Trim()).Where(x => !string.IsNullOrWhiteSpace(x)).ToArray();

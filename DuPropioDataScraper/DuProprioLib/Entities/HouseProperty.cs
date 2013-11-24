@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,20 +11,23 @@ namespace DuProprioLib.Entities
     {
         string Name { get; }
         object Value { get; }
-        HouseInfo House { get; }
+
+        [JsonIgnore]
+        HouseDetailInfo House { get; }
     }
     public class SingleHouseProperty : Tuple<string, string>, IHouseProperty
     {
-        private HouseInfo m_House;
+        private HouseDetailInfo m_House;
 
-        public HouseInfo House
+        [JsonIgnore]
+        public HouseDetailInfo House
         {
             get { return m_House; }
         }
         public string Name { get { return this.Item1; } }
         public object Value { get { return this.Item2; } }
 
-        public SingleHouseProperty(HouseInfo house, string name, string value)
+        public SingleHouseProperty(HouseDetailInfo house, string name, string value)
             : base(name, value)
         {
             m_House = house;
@@ -36,16 +40,17 @@ namespace DuProprioLib.Entities
     }
     public class ListHouseProperty : Tuple<string, IEnumerable<string>>, IHouseProperty
     {
-        private HouseInfo m_House;
+        private HouseDetailInfo m_House;
 
-        public HouseInfo House
+        [JsonIgnore]
+        public HouseDetailInfo House
         {
             get { return m_House; }
         }
         public string Name { get { return this.Item1; } }
         public object Value { get { return this.Item2; } }
 
-        public ListHouseProperty(HouseInfo house, string name, IEnumerable<string> values)
+        public ListHouseProperty(HouseDetailInfo house, string name, IEnumerable<string> values)
             : base(name, values)
         {
             m_House = house;
