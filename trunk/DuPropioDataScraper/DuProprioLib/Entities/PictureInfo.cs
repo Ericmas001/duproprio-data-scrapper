@@ -5,10 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using EricUtility;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace DuProprioLib.Entities
 {
-    class PictureInfo
+    public class PictureInfo
     {
         private int m_Index;
         private string m_Title;
@@ -16,9 +17,10 @@ namespace DuProprioLib.Entities
         private string m_ImageUrlSmall;
         private string m_ImageUrlLarge;
         private string m_ImageUrlBig;
-        private HouseInfo m_House;
+        private HouseDetailInfo m_House;
 
-        public HouseInfo House
+        [JsonIgnore]
+        public HouseDetailInfo House
         {
             get { return m_House; }
         }
@@ -58,7 +60,7 @@ namespace DuProprioLib.Entities
             get { return m_ImageUrlBig; }
             set { m_ImageUrlBig = value; }
         }
-        public PictureInfo(HouseInfo house, string html)
+        public PictureInfo(HouseDetailInfo house, string html)
         {
             m_House = house;
             m_Index = int.Parse(html.Extract("data-index=\"", "\""));
