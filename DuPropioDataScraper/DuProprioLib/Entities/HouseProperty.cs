@@ -11,12 +11,14 @@ namespace DuProprioLib.Entities
     {
         string Name { get; }
         object Value { get; }
+        bool HasMultiples { get; }
 
         [JsonIgnore]
         HouseDetailInfo House { get; }
     }
     public class SingleHouseProperty : Tuple<string, string>, IHouseProperty
     {
+        public bool HasMultiples { get { return false; } }
         private HouseDetailInfo m_House;
 
         [JsonIgnore]
@@ -24,8 +26,15 @@ namespace DuProprioLib.Entities
         {
             get { return m_House; }
         }
-        public string Name { get { return this.Item1; } }
-        public object Value { get { return this.Item2; } }
+        public string Name { get { return base.Item1; } }
+        public object Value { get { return base.Item2; } }
+
+
+        [JsonIgnore]
+        public new string Item1 { get { return base.Item1; } }
+
+        [JsonIgnore]
+        public new string Item2 { get { return base.Item2; } }
 
         public SingleHouseProperty(HouseDetailInfo house, string name, string value)
             : base(name, value)
@@ -40,6 +49,7 @@ namespace DuProprioLib.Entities
     }
     public class ListHouseProperty : Tuple<string, IEnumerable<string>>, IHouseProperty
     {
+        public bool HasMultiples { get { return true; } }
         private HouseDetailInfo m_House;
 
         [JsonIgnore]
@@ -47,8 +57,14 @@ namespace DuProprioLib.Entities
         {
             get { return m_House; }
         }
-        public string Name { get { return this.Item1; } }
-        public object Value { get { return this.Item2; } }
+        public string Name { get { return base.Item1; } }
+        public object Value { get { return base.Item2; } }
+
+        [JsonIgnore]
+        public new string Item1 { get { return base.Item1; } }
+
+        [JsonIgnore]
+        public new IEnumerable<string> Item2 { get { return base.Item2; } }
 
         public ListHouseProperty(HouseDetailInfo house, string name, IEnumerable<string> values)
             : base(name, values)
