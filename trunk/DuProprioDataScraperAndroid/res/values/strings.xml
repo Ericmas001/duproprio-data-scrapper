@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">DuProprioDataScraperAndroid</string>
+    <string name="title_house_list">Houses</string>
+    <string name="title_activity_house">House Detail</string>
+    <string name="show_gmap">Show on Map</string>
+    <string name="call_the_owner">Call The Owner</string>
+    <string name="Open_Website">Open Website</string>
+    <string name="sec_info">Info Generale</string>
+    <string name="sec_pieces">Pieces</string>
+    <string name="sec_caracts">Caractéristiques</string>
+    <string name="sec_photos">Photos</string>
+
+</resources>

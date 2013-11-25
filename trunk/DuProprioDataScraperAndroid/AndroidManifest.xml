@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.ericmas001.duproprio"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="com.ericmas001.duproprio.activity.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:windowSoftInputMode="adjustResize|stateVisible" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.ericmas001.duproprio.activity.HouseSummaryActivity"
+            android:label="@string/title_house_list" >
+        </activity>
+        <activity
+            android:name="com.ericmas001.duproprio.activity.HouseActivity"
+            android:label="@string/title_activity_house"
+            android:parentActivityName="com.ericmas001.duproprio.activity.HouseSummaryActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ericmas001.duproprio.activity.HouseSummaryActivity" />
+        </activity>
+        <activity
+            android:name="com.ericmas001.duproprio.activity.house.GalleryViewPagerActivity"
+            android:label="@string/title_activity_house"
+            android:parentActivityName="com.ericmas001.duproprio.activity.HouseActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.ericmas001.duproprio.activity.HouseActivity" />
+        </activity>
+    </application>
+
+</manifest>

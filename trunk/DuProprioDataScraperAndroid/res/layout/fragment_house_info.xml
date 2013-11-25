@@ -1,0 +1,118 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/lblNoAnnonce"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="#Annonce"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/lblTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblNoAnnonce"
+        android:layout_below="@+id/lblNoAnnonce"
+        android:text="Titre de l'annonce"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:singleLine="true"
+        android:scrollHorizontally="true" />"
+
+    <ImageView
+        android:id="@+id/imgVignette"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblTitle"
+        android:layout_below="@+id/lblTitle"
+        android:src="@drawable/ic_action_place" />
+
+    <TextView
+        android:id="@+id/lblPrecision"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lblNoAnnonce"
+        android:layout_alignParentRight="true"
+        android:text="Précision"
+        android:textColor="#ff0000"
+        android:textAppearance="?android:attr/textAppearanceSmall" 
+        android:singleLine="true" />
+    
+    <TextView
+        android:id="@+id/lblAdresse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imgVignette"
+        android:layout_toRightOf="@+id/imgVignette"
+        android:layout_marginLeft="5dip"
+        android:text="Adresse"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:singleLine="true" 
+        android:scrollHorizontally="true" />"
+    <TextView
+        android:id="@+id/lblVille"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblAdresse"
+        android:layout_toRightOf="@+id/imgVignette"
+        android:layout_marginLeft="5dip"
+        android:text="Ville"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:singleLine="true" 
+        android:scrollHorizontally="true" />"
+    <TextView
+        android:id="@+id/lblRegion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblVille"
+        android:layout_toRightOf="@+id/imgVignette"
+        android:layout_marginLeft="5dip"
+        android:text="Region"
+        android:textAppearance="?android:attr/textAppearanceMedium" 
+        android:singleLine="true" 
+        android:scrollHorizontally="true" />"
+    <View
+        android:id="@+id/dummy_line1"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_below="@+id/imgVignette" 
+        android:layout_alignLeft="@+id/lblNoAnnonce"
+		android:background="#c0c0c0"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip" />
+
+    <TextView
+        android:id="@+id/lblShortDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/lblNoAnnonce"
+        android:layout_below="@+id/dummy_line1"
+        android:gravity="center"
+        android:text="Short Description" />
+    <View
+        android:id="@+id/dummy_line2"
+		android:layout_width="match_parent"
+		android:layout_height="1dp"
+		android:layout_below="@+id/lblShortDescription" 
+        android:layout_alignLeft="@+id/lblNoAnnonce"
+		android:background="#c0c0c0"
+        android:layout_marginTop="5dip"
+        android:layout_marginBottom="5dip" />
+
+    <WebView
+        android:id="@+id/webLongDescription"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/dummy_line2"
+        android:layout_alignLeft="@+id/lblNoAnnonce"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>
