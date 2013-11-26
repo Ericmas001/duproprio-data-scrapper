@@ -39,7 +39,7 @@ namespace DuProprioLib.Entities
             m_Cookies = new CookieContainer();
             m_Client = new HttpClient(new HttpClientHandler() { CookieContainer = m_Cookies });
 
-            string URI = "http://duproprio.com/webservice/account/validate-login/";
+            string URI = "https://duproprio.com/connecter";
             HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, URI);
 
             request.Headers.Host = "duproprio.com";
@@ -74,7 +74,7 @@ namespace DuProprioLib.Entities
             //X-Requested-With: XMLHttpRequest
             request.Headers.Add("X-Requested-With", "XMLHttpRequest");
 
-            request.Headers.Referrer = new Uri("http://duproprio.com/modal/account/login");
+            request.Headers.Referrer = new Uri(URI);
 
             HttpResponseMessage result = await m_Client.SendAsync(request);
 
