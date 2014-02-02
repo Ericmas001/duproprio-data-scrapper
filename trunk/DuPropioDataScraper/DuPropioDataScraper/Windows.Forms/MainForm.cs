@@ -35,6 +35,7 @@ namespace DuPropioDataScraper.Windows.Forms
 
             EnableAll(false);
             m_All.Clear();
+            dgvListFavs.Rows.Clear();
             if (m_Session == null || !m_Session.Connected)
             {
                 m_Session = new SessionInfo(txtUser.Text, txtPass.Text);
@@ -64,7 +65,8 @@ namespace DuPropioDataScraper.Windows.Forms
                 }
                 dgvListFavs.Sort(dgvListFavs.Columns[0], ListSortDirection.Ascending);
             }
-            dgvListFavs.Rows[0].Selected = true;
+            if (dgvListFavs.Rows.Count > 0)
+                dgvListFavs.Rows[0].Selected = true;
             EnableAll(true);
         }
 
