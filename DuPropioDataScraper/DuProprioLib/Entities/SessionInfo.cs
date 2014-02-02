@@ -92,15 +92,21 @@ namespace DuProprioLib.Entities
             if (!m_Connected)
                 return null;
             // Get all favs
-            IEnumerable<string> liste = (await m_Client.GetStringAsync("http://duproprio.com/my-account/dashboard-buyer/bookmarks")).Extract("<ul id=\"favouritesResults\">", "</ul>").Split(new String[] { "</li>" }, StringSplitOptions.None);
-
+            List<string> all = new List<string>();
+            string s = null;
+            for (int p = 1; p == 1 || s != null; ++p)
+            {
+                s = (await m_Client.GetStringAsync("http://duproprio.com/my-account/dashboard-buyer/bookmarks?page=" + p)).Extract("<ul id=\"favouritesResults\">", "</ul>");
+                if (s!=null)
+                    all.AddRange(s.Split(new String[] { "</li>" }, StringSplitOptions.None));
+            }
             // Trim and delete empty entries
-            liste = liste.Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x));
+            IEnumerable<string> list = all.Select(x => x.Trim()).Where(x => !string.IsNullOrWhiteSpace(x));
 
             // Get Rid of the Sold ones
-            liste = liste.Where(x => !x.Contains("<div class=\"infoSold\">"));
+            list = list.Where(x => !x.Contains("<div class=\"infoSold\">"));
 
-            return liste.Select(x => new HouseSummary(this, x));
+            return list.Select(x => new HouseSummary(this, x));
         }
 
         public async Task<HouseInfo> GetHouseInfo(HouseSummary summary)
